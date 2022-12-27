@@ -3,7 +3,7 @@
   "displayName": "Indent Buttons",
   "publisher": "hectoralvf",
   "description": "Adds accessible buttons for indenting and unindenting text",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icon": ".images/icon-128x128.png",
   "engines": {
     "vscode": "^1.74.0"
@@ -22,17 +22,31 @@
     "onCommand:indent-buttons.indentLeft"
   ],
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "indent-buttons.indentRight",
-        "title": "Indent Right"
-      },
-      {
-        "command": "indent-buttons.indentLeft",
-        "title": "Indent Left"
+    "contributes": {
+      "commands": [
+        {
+          "command": "indent-buttons.indentRight",
+          "title": "Increase indentation",
+          "icon": "$(indent)"
+        },
+        {
+          "command": "indent-buttons.indentLeft",
+          "title": "Decrease indentation",
+          "icon": "$(newline)"
+        }
+      ],
+      "menus": {
+        "editor/title": [
+          {
+            "command": "indent-buttons.indentLeft",
+            "group": "navigation@999992"
+          },
+          {
+            "command": "indent-buttons.indentRight",
+            "group": "navigation@999993"
+          }
+        ]
       }
-    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

@@ -2,29 +2,8 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
   // Define the commands that will be executed when the buttons are clicked
-  const indentRightCommand = 'indent-buttons.indentRight';
-  const indentLeftCommand = 'indent-buttons.indentLeft';
-  context.subscriptions.push(vscode.commands.registerCommand(indentRightCommand, indentRight));
-  context.subscriptions.push(vscode.commands.registerCommand(indentLeftCommand, indentLeft));
-
-  // Create the indent right button
-  const indentRightButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-  // Try to use the Unicode symbol for the right arrow (U+2192) as the label for the button
-  const indentRightLabel = String.fromCodePoint(0x21E5) || 'Indent Right';
-  indentRightButton.text = indentRightLabel;
-  indentRightButton.color = 'var(--vscode-tab-activeBorder)';
-  indentRightButton.command = indentRightCommand;
-  indentRightButton.show();
-
-
-  // Create the indent left button
-  const indentLeftButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-  // Try to use the Unicode symbol for the right arrow (U+2192) as the label for the button
-  const indentLeftLabel = String.fromCodePoint(0x21E4) || 'Indent Left';
-  indentLeftButton.text = indentLeftLabel;
-  indentLeftButton.color = 'var(--vscode-tab-activeBorder)';
-  indentLeftButton.command = indentLeftCommand;
-  indentLeftButton.show();
+  context.subscriptions.push(vscode.commands.registerCommand('indent-buttons.indentRight', indentRight));
+  context.subscriptions.push(vscode.commands.registerCommand('indent-buttons.indentLeft', indentLeft));
 }
 
 function indentRight() {
